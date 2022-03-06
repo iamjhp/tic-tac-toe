@@ -1,7 +1,18 @@
+:root {
+    --dark-blue: #2a5785;
+    --text-white: blanchedalmond;
+}
+
 * {
     margin: 0;
     padding: 0;
 }
+
+html {
+    /* footer support */
+    position: relative;
+    min-height: 100%;
+  }
 
 body {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -10,14 +21,14 @@ body {
 
 header {
     text-align: center;
-    background-color: #2a5785;
+    background-color: var(--dark-blue);
 }
 
 header > h1 {
     font-size: 6rem;
     margin-top: 0;
     margin-bottom: 1rem;
-    color:blanchedalmond;
+    color: var(--text-white);
 }
 
 .status {
@@ -30,10 +41,10 @@ header > h1 {
     display: grid;
     grid-template-columns: repeat(3, 150px);
     grid-template-rows: repeat(3, 150px);
-    background-color: #2a5785;
+    background-color: var(--dark-blue);
     width: 450px;
 	height: 450px;
-    margin: 3rem auto;
+    margin: 2rem auto;
     border: 6px solid #283a4b;
     border-radius: 1rem;
 }
@@ -47,3 +58,30 @@ header > h1 {
     font-size: 5rem;
     color: antiquewhite;
 }
+
+.container {
+    text-align: center;
+}
+
+button {
+    background-color: var(--dark-blue);
+    color: var(--text-white);
+    border: solid transparent;
+    border-radius: 16px;
+    width: 3rem;
+    height: 2rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 8rem;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(46, 126, 79);
+}
+

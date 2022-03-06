@@ -1,5 +1,6 @@
 const fields = document.querySelectorAll(".field")
 const statusGame = document.querySelector(".status")
+const resetButton = document.querySelector(".reset")
 
 // Player factory pattern
 const Player = (sign) => {
@@ -8,7 +9,7 @@ const Player = (sign) => {
 }
 
 const gameBoard = (() => {
-    const board = new Array(9)
+    let board = new Array(9)
     
     const setField = (id, sign) => {
         board[id] = sign
@@ -24,19 +25,28 @@ const gameBoard = (() => {
         })
     }
 
-    return {setField, updateBoard, getFieldSign}
+    const resetBoard = () => {
+        board = new Array(9)
+        updateBoard()
+    }
+
+    return {setField, updateBoard, getFieldSign, resetBoard}
 })();
 
 
 // handle all events of the game
 const displayController = (() => {
     fields.forEach((field,id) => {
-        field.addEventListener("click", () => {
-            if (!field.textContent) {
-                // clicked field is not taken
+        field.addEventListener("click", function addFieldClickListener (){
+            if (!field.textContent && gameController.getIsPlaying()) {
+                // clicked field is not taken and the game is not over yet
                  gameController.playRound(id)
             }
         })
+    })
+
+    resetButton.addEventListener("click", () => {
+        gameController.resetGame()
     })
 })();
 
@@ -44,6 +54,7 @@ const gameController = (() => {
     const PlayerX = Player("X")
     const PlayerO = Player("O")
     let round = 1;
+    let isPlaying = true
 
     const getCurrentPlayerSign = () => {return (round % 2) == 1 ? PlayerX.getSign() : PlayerO.getSign()}
     
@@ -53,18 +64,25 @@ const gameController = (() => {
         gameBoard.setField(id, getCurrentPlayerSign())
         gameBoard.updateBoard()
         if (checkWinner()) {
-            console.log("heeeyyyyyyy")
+            isPlaying = false
+            displayWinner()
+
         } else if (checkTie()) {
-            console.log("tie")
+            isPlaying = false
+            displayTie()
+        } else {
+            increaseRound()
+            displayCurrentPlayer()
         }
-     
-        increaseRound()
-        dispalyCurrentPlayer()
+
     }
 
-    const dispalyCurrentPlayer = () => {
+    const displayCurrentPlayer = () => {
         statusGame.textContent = "Player " + getCurrentPlayerSign() + "'s turn"
     }
+
+    const displayWinner = () => statusGame.textContent = "Winner: " + "Player" + getCurrentPlayerSign()
+    const displayTie = () => statusGame.textContent = "Tie"
 
     const checkWinner = () => {
         const winningConidtions = [
@@ -96,8 +114,16 @@ const gameController = (() => {
         return false
     }
 
+    const resetGame = () => {
+        gameBoard.resetBoard()
+        round = 1
+        isPlaying = true
+        displayCurrentPlayer()
+    }
 
-    return {playRound}
+    const getIsPlaying = () => {return isPlaying}
+
+    return {playRound, resetGame, getIsPlaying}
 })();
 
 
