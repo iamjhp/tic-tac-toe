@@ -9,9 +9,6 @@
 }
 
 html {
-    /* footer support */
-    position: relative;
-    min-height: 100%;
   }
 
 body {
@@ -73,8 +70,7 @@ button {
 }
 
 footer {
-    position: absolute;
-    bottom: 8rem;
+    margin-top: 1rem;
     text-align: center;
     width: 100%;
     font-size: 20px;
