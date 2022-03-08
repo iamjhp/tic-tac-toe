@@ -1,7 +1,7 @@
 # Tic-tac-toe
 
 #### 📝 Description
-Tic-tac-toe built with HTML, CSS, Javascript and Webpack
+Tic-tac-toe built with HTML, CSS and Javascript
 
 **Live preview:** [here](https://cocky-banach-35576d.netlify.app/)
 
@@ -9,5 +9,4 @@ Tic-tac-toe built with HTML, CSS, Javascript and Webpack
  * HTML
  * CSS
  * JavaScript
- * Webpack
  
