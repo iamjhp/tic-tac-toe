@@ -1,9 +1,13 @@
-# Tic-Tac-Toe
-Tic-Tac-Toe created with HTML, CSS and JavaScript
+# Restaurant Page
 
-**Live preview:** [here](https://cocky-banach-35576d.netlify.app/)
+### [Live Demo]()
 
-## Technologies
-* HTML
-* CSS
-* JavaScript
+#### 📝 Description
+Restaurant page built with ES6 modules, using webpack.
+
+#### 🛠️ Built with
+ * HTML
+ * CSS
+ * JavaScript
+ * Webpack
+ 
